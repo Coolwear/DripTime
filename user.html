@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人中心</title>
+  <style>
+    h1{
+      color: #1BC514FF;
+    }
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .greeting {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color:#212121;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="h1">个人中心</h1>
+  
+  <div class="avatar">
+    <img src="user.svg" alt="头像">
+  </div>
+  
+  <div class="greeting">
+    <script>
+      var currentTime = new Date().getHours();
+      var greeting = "";
+      
+      if (currentTime < 12) {
+        greeting = "上午好";
+      } else if (currentTime < 18) {
+        greeting = "下午好";
+      } else {
+        greeting = "晚上好";
+      }
+      
+      document.write(greeting);
+    </script>
+  </div>
+  <h2>[每日一言]</h2>
+<!-- class =“hitokoto ” 是一言的默认选择器-->
+      <h2 class="hitokoto" id="yiyancon"></h2> 
+      
+	  <script type="text/javascript" src="https://international.v1.hitokoto.cn?encode=js&amp;charset=utf-8&amp;&amp;c=j&amp;c=k&amp;c=l"></script>
+  <script>
+    // 移动端适配
+    var viewportMeta = document.querySelector('meta[name="viewport"]');
+    var deviceWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    
+    if (deviceWidth < 640) {
+      viewportMeta.content = 'width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=0';
+    }
+  </script>
+  <hr>
+  <h4>本app由郑博文提供支持，授权给武隆实验中学23级8班使用，一言服务由hitokoto提供</h4>
+</body>
+</html>
