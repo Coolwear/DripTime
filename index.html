@@ -2,70 +2,56 @@
 <html>
 <head>
   <title>点滴云日志</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f1f1f1;
-    }
-    
-    .box {
-      display: flex;
-      border-radius: 10px;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      width: 90%;
-      max-width: 400px;
-    }
-    
-    .image {
-      flex: 0 0 100px;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-    
-    .image img {
-      width: 100%;
-      height: auto;
-    }
-    
-    .text {
-      flex: 1;
-      padding: 10px;
-    }
-    
-    h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      color: #333;
-    }
-    
-    h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #666;
-    }
-  </style>
+  <style type="text/css">
+
+    @import"style.css";
+
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="box">
-      <div class="image">
-        <img src="230901.jpg" alt="圆形图片">
-      </div>
-      <div class="text">
-        <h2>23/9/1</h2>
-        <h3>梦开始的地方</h3>
-      </div>
-    </div>
-  </div>
+  <h1>点滴云日志</h1>
+  <div id="appList"></div>
+  <script>
+    var appData = [
+    {name: "风华正茂龙腾飞，砥砺前行谱新篇",icon: "230901.jpg",txtNumber: "1",txt:"2024/2/20"},
+    {name: "梦开始的地方",icon: "230901.jpg",txtNumber: "2",txt:"2023/9/1"},
+    ]
+    window.addEventListener("DOMContentLoaded", function () {
+      var appListContainer = document.getElementById("appList");
+
+      for (var i = 0; i < appData.length; i++) {
+        var app = appData[i];
+
+        var appBox = document.createElement("div");
+        appBox.className = "app-container";
+
+        var appIcon = document.createElement("img");
+        appIcon.className = "app-icon";
+        appIcon.src = app.icon;
+        appBox.appendChild(appIcon);
+
+        var appInfo = document.createElement("div");
+        appInfo.className = "app-info";
+
+        var appName = document.createElement("h2");
+        appName.textContent = app.name;
+        appInfo.appendChild(appName);
+
+        var appTXT = document.createElement("p");
+        appTXT.textContent = app.txt;
+        appInfo.appendChild(appTXT);
+
+        appBox.appendChild(appInfo);
+
+        var appButton = document.createElement("a");
+        appButton.href = "1.html?/page" + app.txtNumber;
+        appButton.className = "btn";
+        appButton.textContent = "跳转";
+        appBox.appendChild(appButton);
+
+        appListContainer.appendChild(appBox);
+      }
+    });
+  </script>
 </body>
 </html>

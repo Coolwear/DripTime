@@ -1,0 +1,67 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>基于URL末尾的嵌套网页</title>  
+  <style>
+            header {
+            background-color: #5D9CEC;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    .back-button {
+            color: #FFFFFF;
+            background-color: #337AB7;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+  </style>
+  <script>  
+    function loadPageBasedOnUrl() {  
+      var url = window.location.href;  
+      var page = url.split('/').pop();  
+      var iframe = document.getElementById('nested-page');  
+  
+      switch (page) {  
+        case 'page1':  
+          iframe.src = 'https://flowus.cn/coolbox/share/b49bb9e8-f93f-4985-b7cc-b32b3438ef51【FlowUs 息流】开学典礼'; // 替换为页面1的实际URL  
+          break;  
+        case 'page2':  
+          iframe.src = 'https://flowus.cn/coolbox/share/b4d8c185-187b-44ac-b584-6d2d9debec5b【FlowUs 息流】梦开始的地方'; // 替换为页面2的实际URL  
+          break;  
+        case 'page3':  
+          iframe.src = 'page3.html'; // 替换为页面3的实际URL  
+          break;  
+        default:  
+          iframe.src = 'default.html'; // 替换为默认页面的实际URL  
+      }  
+    }  
+    window.addEventListener('DOMContentLoaded', () => {
+            const backButton = document.querySelector('.back-button');
+            backButton.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+
+            const openButton = document.querySelector('.open-button');
+            openButton.addEventListener('click', () => {
+                window.open('https://player.codemao.cn/new/83448395');
+            });
+        });
+  </script>  
+</head> 
+<header>
+  <div class="back-button">&#8678;</div>
+</header> 
+<body onload="loadPageBasedOnUrl()">  
+  <iframe id="nested-page" width="100%" height="500px" frameborder="0"></iframe>  
+</body>  
+</html>

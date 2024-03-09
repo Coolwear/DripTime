@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>应用列表</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .app-container {
+      max-width: 90%;
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+    }
+
+    .app-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .app-info {
+      flex-grow: 1;
+    }
+
+    h2 {
+      color: #2196f3;
+      margin: 0 0 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #2196f3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0c7cd5;
+    }
+    
+    #circle {
+      position: fixed;
+      top: 5%;
+      left: 0;
+      transform: translate(50%, -50%);
+      width: 50px;
+      height: 50px;
+      background-color: #2196f3;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    #circle img {
+      max-width: 90%;
+      max-height: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div id="circle">
+		<a href="classify.html">
+		  <img src="menu.png" alt="Menu Icon">
+		</a>
+	  </div>
+  <div id="appList"></div>
+  <script>
+    var appData = [
+    {name: "[力荐]酷玩极速pro",icon: "appimage/coolwatch.png",txtNumber: "47"},
+    {name: "Via",icon: "https://img.logojiang.com/wp-content/uploads/2020/04/2020-04-14-37660366logojiang.jpg",txtNumber: "19"},
+    {name: "ES文件浏览器",icon: "https://android-artworks.25pp.com/fs08/2022/11/24/4/2_a38001d5b664d0e3bdca6fa55d3578bc_con_130x130.png",txtNumber: "20"},
+    {name: "mini软件卸载",icon: "https://android-artworks.25pp.com/fs08/2016/06/07/2/1_972b889e1f9465c8efb3f1dd3b6a68c3_con_130x130.png",txtNumber: "21"},
+    {name: "腕上小纸条",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1688440715667/1.png",txtNumber: "22"},
+    {name: "文件管理器",icon: "http://pic.xlhs.com/up/2020-12/202012181427537534.png",txtNumber: "23"},
+    {name: "只因工具箱",icon: "http://pic.xlhs.com/up/2023-2/20232191525465378.png",txtNumber: "24"},
+    {name: "作业帮家长版",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1688440821449/1.png",txtNumber: "25"},
+	{name: "最美天气",icon: "https://app-center.cdn.bcebos.com/appcenter/sts/pcfile/5419161866/04a7488acd9340749f2ccbcf979c3642.png",txtNumber: "26"},
+	{name: "搜狗输入法",icon: "http://gdown.baidu.com/img/0/512_512/0bf75975e4964642627768edef8469f4.png",txtNumber: "27"},
+	{name: "抬腕文件",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1688440859375/1.png",txtNumber: "28"},
+	{name: "夜间屏幕调节器",icon: "http://pic.xlhs.com/up/2021-6/20216101447377016.png",txtNumber: "29"},
+	{name: "Memory Cleaner",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1688348247777/1.png",txtNumber: "41"},
+	{name: "Microsoft远程桌面",icon: "http://pic.danji100.com/upload/2020-11/20201112173575213.png",txtNumber: "42"},
+	{name: "poke 安装器",icon: "http://pic.xlhs.com/up/2022-2/20222231528497659.png",txtNumber: "43"},
+	{name: "夸克手表版",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1688349222571/1.png",txtNumber: "44"},
+  {name: "YWC工具箱",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1697261099438/com.ywcSystem.box.png",txtNumber: "45"},
+	{name: "腕上文件管理器",icon: "https://fs-im-kefu.7moor-fs1.com/29397395/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1697261320511/com.cjy.wearplay.png",txtNumber: "46"},
+]
+
+
+    window.addEventListener("DOMContentLoaded", function () {
+      var appListContainer = document.getElementById("appList");
+
+      for (var i = 0; i < appData.length; i++) {
+        var app = appData[i];
+
+        var appBox = document.createElement("div");
+        appBox.className = "app-container";
+
+        var appIcon = document.createElement("img");
+        appIcon.className = "app-icon";
+        appIcon.src = app.icon;
+        appBox.appendChild(appIcon);
+
+        var appInfo = document.createElement("div");
+        appInfo.className = "app-info";
+
+        var appName = document.createElement("h2");
+        appName.textContent = app.name;
+        appInfo.appendChild(appName);
+
+        appBox.appendChild(appInfo);
+
+        var appButton = document.createElement("a");
+        appButton.href = "receiver.html?txtNumber=" + app.txtNumber;
+        appButton.className = "btn";
+        appButton.textContent = "跳转";
+        appBox.appendChild(appButton);
+
+        appListContainer.appendChild(appBox);
+      }
+    });
+  </script>
+</body>
+</html>
